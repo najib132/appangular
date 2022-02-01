@@ -1,0 +1,51 @@
+<form #f="ngForm" (ngSubmit)="submitForm(f)">
+
+    <div class="form-group">
+        <label for="firstname">firstname</label>
+        <input required minlength="4" ngModel class="form-control" name="firstname" #firstname="ngModel" id="firstname" type="text">
+        <div  class="alert alert-danger" *ngIf="firstname.touched && !firstname.valid">
+                ce champs est obligatoire
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="lastname">lastname</label>
+        <input ngModel name="lastname" class="form-control" #lastname id="lastname" type="text">
+    </div>
+    
+
+    <div class="form-group">
+        <label for="comment">comment</label>
+        <textarea ngModel name="comment" class="form-control" #comment id="comment" type="text"></textarea>
+    </div>
+
+    <div class="checkbox">
+        <label>
+          <input type="checkbox" ngModel name="subscripte">S'abonner
+        </label>
+    </div> 
+
+    <div class="form-group">
+        <label for="methodContact">method de contact</label>
+        <select class="form-control" id="methodContact" ngModel name="methodContact" id="">
+          <option value=""></option>
+          <option *ngFor="let contact of contacts" [ngValue]="contact">{{ contact.name }}</option>
+        </select>
+    </div>
+
+    <div class="radio" *ngFor="let contact of contacts">
+        <label for="">
+          <input type="radio" ngModel name="contacts" [value]="contact.id" >
+          {{ contact.name }}
+        </label>
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-primary" [disabled]="!f.valid">Enregistre</button>
+    </div>
+
+</form>
+
+{{ f.value | json }}
+
+
+

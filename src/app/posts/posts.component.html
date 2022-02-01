@@ -1,0 +1,26 @@
+<form>
+    <legend>new post</legend>
+
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input [(ngModel)]="post.title" name="title" type="text" class="form-control" id="title" placeholder="title">
+    </div>
+    <div class="form-group">
+        <label for="body">body</label>
+        <textarea [(ngModel)]="post.body" name="body" type="text" class="form-control" id="body" placeholder="body"></textarea>
+    </div>
+    <button class="btn btn-primary" *ngIf="status" (click)="createPost()">Submit</button>
+    <button class="btn btn-success" *ngIf="!status" (click)=updatePost(post)>update</button> 
+</form>
+
+
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let post of posts">
+        <h4>{{ post.title }}</h4>
+        <p>{{ post.body }}</p>
+        <div align="right">
+            <button class="btn btn-warning" (click)="editPost(post)">Edit</button>
+            <button class="btn btn-danger" (click)="deletePost(post)">Delete</button> 
+       </div>
+    </li>
+</ul>  

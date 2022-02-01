@@ -1,0 +1,17 @@
+<span>
+    <i 
+     class="fa "
+     [ngClass]="{
+        'fa-star'   : star,
+        'fa-star-o' : !star
+     }"
+
+     [ngStyle]="{
+         'color'      : star ? 'red'  : 'blue',
+         'font-size'  : star ? '100px' : '60px'
+     }"
+     
+     (click)="clickStar()">
+    </i>
+    
+</span>
